@@ -1,0 +1,825 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#070814">
+<title>NightStream | Support My Journey</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #070814;
+  --panel: #0e1022;
+  --purple: #a879ff;
+  --blue: #748aff;
+  --gold: #d8c6ff;
+  --text: #f3edff;
+  --muted: #aaa6c7;
+  --border: #7160a455;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Cormorant Garamond", serif;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -2;
+  background:
+    radial-gradient(ellipse at 15% 20%, #5227a52b, transparent 40%),
+    radial-gradient(ellipse at 90% 60%, #2534a32a, transparent 45%);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button { font: inherit; }
+
+.stars {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.star {
+  position: absolute;
+  color: #d7c4ff;
+  opacity: .5;
+  animation: twinkle 3s ease-in-out infinite alternate;
+}
+
+@keyframes twinkle {
+  from { opacity: .15; transform: scale(.8); }
+  to { opacity: .8; transform: scale(1.2); }
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(25px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-9px); }
+}
+
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 12px #8958ff25; }
+  50% { box-shadow: 0 0 28px #8958ff65; }
+}
+
+/* NAVIGATION */
+
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 17px 6%;
+  background: #070814ed;
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(16px);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: Cinzel, serif;
+  font-weight: 800;
+  font-size: 21px;
+  color: var(--purple);
+  white-space: nowrap;
+}
+
+.logo-symbol {
+  font-size: 29px;
+  text-shadow: 0 0 20px var(--purple);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  font-family: Cinzel, serif;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.nav-links a {
+  transition: .3s;
+}
+
+.nav-links a:hover {
+  color: white;
+  text-shadow: 0 0 12px var(--purple);
+}
+
+/* HERO */
+
+.hero {
+  min-height: 650px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 80px 8%;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border);
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(90deg, #070814 0%, #070814ee 38%,
+    #07081475 70%, #070814b0 100%),
+    url("https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1800&q=85")
+    center/cover;
+  opacity: .65;
+}
+
+.hero::after {
+  content: "✧";
+  position: absolute;
+  right: 7%;
+  top: 12%;
+  font-size: 160px;
+  color: #b79bff22;
+  animation: float 5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.hero-content {
+  width: 100%;
+  max-width: 650px;
+  animation: rise 1s ease both;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--purple);
+  font-family: Cinzel, serif;
+  font-size: 11px;
+  letter-spacing: 4px;
+  margin-bottom: 23px;
+}
+
+.eyebrow::before,
+.eyebrow::after {
+  content: "✧";
+  font-size: 17px;
+}
+
+.hero h1 {
+  font-family: Cinzel, serif;
+  font-size: clamp(38px, 6.5vw, 76px);
+  font-weight: 700;
+  line-height: 1.22;
+  letter-spacing: -1px;
+  margin-bottom: 23px;
+}
+
+.gradient {
+  background: linear-gradient(100deg, #eee0ff, #aa80ff, #8eaeff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 0 14px #8b5cf633);
+}
+
+.hero p {
+  color: #c1bdd8;
+  font-size: 19px;
+  line-height: 1.7;
+  max-width: 480px;
+  margin-bottom: 30px;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 13px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 13px 23px;
+  border: 1px solid var(--border);
+  font-family: Cinzel, serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .5px;
+  cursor: pointer;
+  transition: .3s;
+  clip-path: polygon(8% 0, 92% 0, 100% 50%,
+    92% 100%, 8% 100%, 0 50%);
+}
+
+.btn:hover {
+  transform: translateY(-4px);
+  filter: brightness(1.2);
+}
+
+.btn-primary {
+  background: linear-gradient(100deg, #6840d8, #a15bff);
+  color: white;
+  border-color: #b89aff;
+  box-shadow: 0 0 25px #7c3aed40;
+}
+
+.btn-secondary {
+  background: #0b0c1bc9;
+  color: #e1d6ff;
+}
+
+.hero-socials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-top: 36px;
+}
+
+.hero-socials a {
+  color: var(--purple);
+  font-family: Cinzel, serif;
+  font-size: 12px;
+  transition: .3s;
+}
+
+.hero-socials a:hover {
+  color: white;
+  text-shadow: 0 0 15px var(--purple);
+}
+
+/* GENERAL SECTION */
+
+section {
+  padding: 75px 7%;
+  max-width: 1250px;
+  margin: auto;
+}
+
+.section-heading {
+  text-align: center;
+  margin-bottom: 42px;
+}
+
+.section-heading .ornament {
+  display: block;
+  color: var(--purple);
+  font-size: 25px;
+  margin-bottom: 8px;
+}
+
+.section-heading h2 {
+  font-family: Cinzel, serif;
+  font-size: clamp(23px, 4vw, 35px);
+  font-weight: 600;
+  margin-bottom: 13px;
+}
+
+.section-heading p {
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+/* SUPPORT CARDS */
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 17px;
+}
+
+.card {
+  text-align: center;
+  padding: 27px 18px;
+  position: relative;
+  background: linear-gradient(150deg, #17162e, #0b0c1a);
+  border: 1px solid var(--border);
+  transition: .35s;
+  overflow: hidden;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 15%;
+  width: 70%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--purple), transparent);
+}
+
+.card:hover {
+  transform: translateY(-7px);
+  border-color: var(--purple);
+  animation: glow 2s infinite;
+}
+
+.card-icon {
+  font-size: 35px;
+  color: var(--purple);
+  margin-bottom: 20px;
+  text-shadow: 0 0 18px #8b5cf677;
+}
+
+.card h3 {
+  font-family: Cinzel, serif;
+  font-size: 16px;
+  margin-bottom: 13px;
+}
+
+.card p {
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.55;
+  min-height: 76px;
+}
+
+.card .btn {
+  width: 100%;
+  margin-top: 20px;
+  padding: 12px 7px;
+  font-size: 10px;
+}
+
+/* DONATION */
+
+.donation-box {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  align-items: center;
+  gap: 35px;
+  padding: 35px;
+  background:
+    linear-gradient(100deg, #121329ed, #090b18f2),
+    url("https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1000&q=80")
+    center/cover;
+  border: 1px solid var(--border);
+  position: relative;
+}
+
+.treasure {
+  font-size: 100px;
+  text-align: center;
+  filter: drop-shadow(0 0 25px #8b5cf688);
+  animation: float 4s ease-in-out infinite;
+}
+
+.donation-info h3 {
+  font-family: Cinzel, serif;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.donation-info > p {
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.6;
+  margin-bottom: 25px;
+}
+
+.goal-labels {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+.goal-labels span:last-child { color: var(--purple); }
+
+.progress {
+  width: 100%;
+  height: 12px;
+  background: #ffffff13;
+  border: 1px solid #ffffff15;
+  margin-bottom: 13px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  width: 45%;
+  height: 100%;
+  background: linear-gradient(90deg, #6940d8, #a879ff, #8eaeff);
+  box-shadow: 0 0 15px #a879ff;
+  transition: width .5s;
+}
+
+.goal-note {
+  color: var(--muted);
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+/* SOCIAL */
+
+.social-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.social-card {
+  padding: 22px 10px;
+  text-align: center;
+  background: #101124;
+  border: 1px solid var(--border);
+  transition: .3s;
+}
+
+.social-card:hover {
+  transform: translateY(-5px);
+  background: #1a1734;
+  border-color: var(--purple);
+}
+
+.social-card .icon {
+  display: block;
+  color: var(--purple);
+  font-size: 27px;
+  margin-bottom: 12px;
+}
+
+.social-card h3 {
+  font-family: Cinzel, serif;
+  font-size: 13px;
+  margin-bottom: 7px;
+}
+
+.social-card p {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+/* FOOTER */
+
+footer {
+  padding: 30px 20px;
+  text-align: center;
+  background: #060710;
+  border-top: 1px solid var(--border);
+}
+
+footer .footer-logo {
+  font-family: Cinzel, serif;
+  color: var(--purple);
+  font-size: 21px;
+  margin-bottom: 9px;
+}
+
+footer p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 850px) {
+  .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .donation-box { grid-template-columns: 1fr; gap: 10px; }
+  .treasure { font-size: 75px; }
+  .social-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+@media (max-width: 550px) {
+  nav { padding: 15px 4%; }
+  .logo { font-size: 16px; gap: 5px; }
+  .logo-symbol { font-size: 22px; }
+  .nav-links { gap: 12px; font-size: 10px; }
+  .hero {
+    min-height: 580px;
+    padding: 65px 6%;
+  }
+  .hero::before {
+    background:
+      linear-gradient(90deg, #070814ee, #070814b8),
+      url("https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=900&q=80")
+      center/cover;
+  }
+  .hero h1 { font-size: clamp(34px, 10vw, 49px); }
+  .hero p { font-size: 17px; }
+  .eyebrow { letter-spacing: 2px; font-size: 9px; }
+  .hero-socials { gap: 17px; }
+  section { padding: 55px 5%; }
+  .cards { grid-template-columns: 1fr; }
+  .card p { min-height: auto; }
+  .donation-box { padding: 24px 18px; }
+  .donation-info h3 { font-size: 20px; }
+  .social-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .section-heading { margin-bottom: 28px; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="stars" id="stars"></div>
+
+<nav>
+  <a href="#home" class="logo">
+    <span class="logo-symbol">✦</span>
+    Yoru adventurer
+  </a>
+
+  <div class="nav-links">
+    <a href="#home">Beranda</a>
+    <a href="#about">Misi</a>
+    <a href="#support">Dukung</a>
+    <a href="#social">Sosial</a>
+  </div>
+</nav>
+
+<header class="hero" id="home">
+  <div class="hero-content">
+    <div class="eyebrow">Welcome, Adventurer</div>
+
+    <h1>
+      DUNIAKU,<br>
+      <span class="gradient">PETUALANGANMU</span>
+    </h1>
+
+    <p>
+      Di bawah cahaya bulan dan langit penuh bintang,
+      setiap permainan menyimpan cerita.
+      Mari temani perjalananku, ciptakan kenangan,
+      dan bangun legenda kita bersama.
+    </p>
+
+    <div class="hero-buttons">
+      <a href="#support" class="btn btn-primary">
+        ♡ DUKUNG PERJALANAN
+      </a>
+
+      <a href="https://youtube.com/@fudo_z?si=QI8N13dvRzlM83B_" target="_blank"
+         rel="noopener" class="btn btn-secondary">
+        ikuti cerita
+      </a>
+    </div>
+
+    <div class="hero-socials">
+      <a href="https://youtube.com/@fudo_z?si=QI8N13dvRzlM83B_" target="_blank" rel="noopener">◈ YouTube</a>
+      <a href="https://www.tiktok.com/@yoru_melvin" target="_blank" rel="noopener">♪ TikTok</a>
+      <a href="https://twitch.tv/" target="_blank" rel="noopener">◇ saluran</a>
+      <a href="https://discord.gg/xhXcM5v5SM" target="_blank" rel="noopener">✧ Discord</a>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="section-heading">
+    <span class="ornament">༺ ✧ ༻</span>
+    <h2>SEBUAH <span class="gradient">PERJALANAN</span></h2>
+    <p>
+      Tak ada legenda yang tercipta sendirian.<br>
+      Jadilah bagian dari kisah petualangan ini.
+    </p>
+  </div>
+</section>
+
+<section id="support">
+  <div class="section-heading">
+    <span class="ornament">✦ ━━━━━ ✦</span>
+    <h2>DUKUNG <span class="gradient">PERJALANANKU</span></h2>
+    <p>
+      Setiap dukungan adalah kekuatan yang membuat
+      petualangan ini terus berlanjut.
+    </p>
+  </div>
+
+  <div class="cards">
+    <article class="card">
+      <div class="card-icon">♜</div>
+      <h3>Persembahan</h3>
+      <p>
+        Berikan dukungan untuk membantu meningkatkan
+        Perlengkapan dan Semangat Petualanganku.
+      </p>
+      <a href="https://saweria.co/" target="_blank"
+         rel="noopener" class="btn btn-primary">
+        BERIKAN DUKUNGAN ↗
+      </a>
+    </article>
+
+    <article class="card">
+      <div class="card-icon">♛</div>
+      <h3>Ikuti Petualangan</h3>
+      <p>
+        Jangan biarkan kisah ini terlewat.
+        Ikuti setiap kisah dengan bergabung.
+      </p>
+      <a href="https://youtube.com/@fudo_z?si=QI8N13dvRzlM83B_" target="_blank"
+         rel="noopener" class="btn btn-secondary">
+        KUNJUNGI CHANNEL ↗
+      </a>
+    </article>
+
+    <article class="card">
+      <div class="card-icon">♧</div>
+      <h3>Persaudaraan</h3>
+      <p>
+        Temukan teman seperjalanan dan bergabunglah
+        bersama para petualang lainnya.
+      </p>
+      <a href="https://discord.gg/xhXcM5v5SM" target="_blank"
+         rel="noopener" class="btn btn-secondary">
+        GABUNG DISCORD ↗
+      </a>
+    </article>
+
+    <article class="card">
+      <div class="card-icon">✧</div>
+      <h3>Sebarkan Legenda</h3>
+      <p>
+        Bagikan kisah ini kepada temanmu agar
+        semakin Legenda terus barlanjut.
+      </p>
+      <button onclick="shareWebsite()" class="btn btn-secondary">
+        BAGIKAN KISAH ↗
+      </button>
+    </article>
+  </div>
+</section>
+
+<section id="goal">
+  <div class="section-heading">
+    <span class="ornament">༺ ⚜ ༻</span>
+    <h2>GERBANG MENUJU <span class="gradient">IMPIAN</span></h2>
+    <p>
+      Bersama, kita bisa membuka babak yang lebih besar.
+    </p>
+  </div>
+
+  <div class="donation-box">
+    <div class="treasure">🗝️</div>
+
+    <div class="donation-info">
+      <h3>Target Donasi</h3>
+      <p>
+        Meningkatkan perlengkapan petualangan dan
+        menghadirkan petualangan dengan kualitas lebih baik.
+      </p>
+
+      <div class="goal-labels">
+        <span>Terkumpul: Rp225.000</span>
+        <span>Target: Rp500.000</span>
+      </div>
+
+      <div class="progress">
+        <div class="progress-fill"></div>
+      </div>
+
+      <div class="goal-note">
+        45% perjalanan telah tercapai.
+        Terima kasih telah menjadi bagian dari kisah ini.
+      </div>
+
+      <a href="https://saweria.co/Yoruuuu" target="_blank"
+         rel="noopener" class="btn btn-primary">
+        ✧ BANTU WUJUDKAN IMPIAN
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="social">
+  <div class="section-heading">
+    <span class="ornament">✦ ━━━━━ ✦</span>
+    <h2>TEMUI AKU DI <span class="gradient">PERJALANAN LAIN</span></h2>
+    <p>
+      Perjalanan tak berhenti saat petualangan berakhir.
+      Mari tetap terhubung.
+    </p>
+  </div>
+
+  <div class="social-grid">
+    <a href="https://youtube.com/@fudo_z?si=5aJDV3oQ39dkko5Z" target="_blank"
+       rel="noopener" class="social-card">
+      <span class="icon">▶</span>
+      <h3>YouTube</h3>
+      <p>Saksikan kisah</p>
+    </a>
+
+    <a href="https://www.tiktok.com/@yoru_melvin" target="_blank"
+       rel="noopener" class="social-card">
+      <span class="icon">♪</span>
+      <h3>TikTok</h3>
+      <p>Momen pilihan</p>
+    </a>
+
+    <a href="https://discord.gg/xhXcM5v5SM" target="_blank"
+       rel="noopener" class="social-card">
+      <span class="icon">✧</span>
+      <h3>Discord</h3>
+      <p>Guild petualangan</p>
+    </a>
+
+    <a href="https://instagram.com/" target="_blank"
+       rel="noopener" class="social-card">
+      <span class="icon">◎</span>
+      <h3>Instagram</h3>
+      <p>Catatan perjalanan</p>
+    </a>
+
+    <a href="   " target="_blank"
+       rel="noopener" class="social-card">
+      <span class="icon">◇</span>
+      <h3>Saluran</h3>
+      <p>Informasi pelualangan selanjutnya</p>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">✧ NightStream ✧</div>
+  <p>
+    "Bahkan malam tergelap menyimpan cahaya bagi mereka
+    yang terus melangkah."
+  </p>
+  <p>© 2026 NightStream · Dibangun dengan ✦ untuk komunitas</p>
+</footer>
+
+<script>
+// Bintang dekoratif
+const stars = document.getElementById("stars");
+
+for (let i = 0; i < 65; i++) {
+  const star = document.createElement("span");
+  star.className = "star";
+  star.textContent = Math.random() > 0.5 ? "✦" : "·";
+  star.style.left = Math.random() * 100 + "%";
+  star.style.top = Math.random() * 100 + "%";
+  star.style.fontSize = (Math.random() * 12 + 5) + "px";
+  star.style.animationDelay = Math.random() * 4 + "s";
+  star.style.animationDuration = (Math.random() * 3 + 2) + "s";
+  stars.appendChild(star);
+}
+
+// Bagikan website
+async function shareWebsite() {
+  const data = {
+    title: "NightStream",
+    text: "Mari bergabung dalam petualangan NightStream!",
+    url: window.location.href
+  };
+
+  if (navigator.share) {
+    try {
+      await navigator.share(data);
+    } catch (error) {
+      if (error.name !== "AbortError") {
+        copyLink();
+      }
+    }
+  } else {
+    copyLink();
+  }
+}
+
+function copyLink() {
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(window.location.href)
+      .then(() => alert("Link website berhasil disalin!"))
+      .catch(() => prompt("Salin link ini:", window.location.href));
+  } else {
+    prompt("Salin link website ini:", window.location.href);
+  }
+}
+</script>
+
+</body>
+</html>
